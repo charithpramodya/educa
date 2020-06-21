@@ -74,8 +74,7 @@ class StudentRegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'fid' => $faker->unique()->sha1,
-            'type'=>'STD',
-            'image_id'=>0,
+            'type'=>'STD'
         ]);
         
         $student=Student::create([
