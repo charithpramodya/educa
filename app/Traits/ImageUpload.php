@@ -22,7 +22,7 @@ trait ImageUpload {
 
         
 
-        $image->save(storage_path('app\public\images\\'.$imgPath,80));
+        $image->save(storage_path('app/public/images/'.$imgPath,80));
 
        // Storage::put('/public/images/'.$imgPath, (string)$image);
 
@@ -39,7 +39,7 @@ trait ImageUpload {
         $current_img=Images::where('id',$Img_id)->first();
 
         if($Img_id!=0){
-            Storage::delete('public\images\\'.$current_img->path);
+            Storage::delete('public/images/'.$current_img->path);
         }
         
 
@@ -53,7 +53,7 @@ trait ImageUpload {
 
         
 
-        $image->save(storage_path('app\public\images\\'.$imgPath,80));
+        $image->save(storage_path('app/public/images/'.$imgPath,80));
 
         //Storage::put('/public/images/'.$imgPath, (string)$image);
 
@@ -79,7 +79,7 @@ trait ImageUpload {
 
         $image->resize(250, 250);
 
-        $image->save(storage_path('app\public\images\\'.$imgPath));
+        $image->save(storage_path('app/public/images/'.$imgPath));
 
         //Storage::put('/public/images/'.$imgPath, (string)$image);
 
@@ -96,7 +96,7 @@ trait ImageUpload {
 
         $current_path=Auth::user()->image_path;
 
-        Storage::delete('public\images\\'.$current_path);
+        Storage::delete('public/images/'.$current_path);
 
 
         $image=Image::make($file);
@@ -106,7 +106,7 @@ trait ImageUpload {
 
         $image->resize(250, 250);
 
-        $image->save(storage_path('app\public\images\\'.$imgPath));
+        $image->save(storage_path('app/public/images/'.$imgPath));
 
         //Storage::put('/public/images/'.$imgPath, (string)$image);
 
@@ -121,7 +121,7 @@ trait ImageUpload {
     public function deleteImage($id){
         $image=Images::where('id',$id)->first();
 
-        Storage::delete('public\images\\'.$image->path);
+        Storage::delete('public/images/'.$image->path);
 
         $image->delete();
         
@@ -136,9 +136,9 @@ trait ImageUpload {
 
 
         if($type=='QUESTION'){
-            $image->save(storage_path('app\public\question\\'.$imgPath));
+            $image->save(storage_path('app/public/question/'.$imgPath));
         }else{
-            $image->save(storage_path('app\public\review\\'.$imgPath));
+            $image->save(storage_path('app/public/review/'.$imgPath));
         }
             
 
@@ -166,9 +166,9 @@ trait ImageUpload {
 
             if($type=='QUESTION'){
                 
-                Storage::delete('public\question\\'.$cur_file);
+                Storage::delete('public/question/'.$cur_file);
             }else{
-                Storage::delete('public\review\\'.$cur_file);
+                Storage::delete('public/review/'.$cur_file);
             }
         }
 
@@ -177,9 +177,9 @@ trait ImageUpload {
 
 
         if($type=='QUESTION'){
-            $image->save(storage_path('app\public\question\\'.$imgPath));
+            $image->save(storage_path('app/public/question/'.$imgPath));
         }else{
-            $image->save(storage_path('app\public\review\\'.$imgPath));
+            $image->save(storage_path('app/public/review/'.$imgPath));
         }
             
 
