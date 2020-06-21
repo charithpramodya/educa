@@ -15,7 +15,7 @@
                 <!--Grid column-->
                 <div class="col-md-6">
 
-                    <!-- Default form register -->
+                    <!--  form register -->
                     <form class="text-center" action="{{ route('post-student-register') }}" method="POST" enctype="multipart/form-data">
 
                         <p class="h4 mb-4">Sign up</p>
@@ -44,7 +44,7 @@
                         </div>
 
                         <!-- E-mail -->
-                        <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4 @error('email') is-invalid @enderror" name="email" placeholder="E-mail" value="{{ old('email') }}" required autocomplete="email">
+                        <input type="email" id="RegisterFormEmail" class="form-control mb-4 @error('email') is-invalid @enderror" name="email" placeholder="E-mail" value="{{ old('email') }}" required autocomplete="email">
 
                         @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -53,7 +53,7 @@
                         @enderror
 
                         <!-- mobile  -->
-                        <input type="text" id="defaultRegisterFormEmail" value="{{ old('telephone') }}" class="form-control mb-4 @error('telephone') is-invalid @enderror" placeholder="Mobile Number" name="telephone" required autocomplete="telephone">
+                        <input type="text" id="RegisterFormTelephone" value="{{ old('telephone') }}" class="form-control mb-4 @error('telephone') is-invalid @enderror" placeholder="Mobile Number" name="telephone" required autocomplete="telephone">
                         
                         @error('telephone')
                             <span class="invalid-feedback" role="alert">
@@ -63,8 +63,13 @@
 
 
                         <!-- exam types  -->
-                        <input type="text" id="defaultRegisterFormEmail" class="form-control mb-4 @error('exam_type') is-invalid @enderror" value="{{ old('exam_type') }}" placeholder="Exam Type" name="exam_type" required autocomplete="exam_type">
+                        <select  id="RegisterFormExam" class="form-control mb-4 @error('exam_type') is-invalid @enderror" name="exam_type" required>
 
+                            @foreach($exams as $exam)
+								<option value="{{$exam->id}}" {{old('exam_type')==$exam->id ? 'selected' : '' }}>{{$exam->en_name}}</option>
+							@endforeach
+
+                        </select>
                         @error('exam_type')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -72,7 +77,7 @@
                         @enderror
 
                         <!-- Password -->
-                        <input type="password" id="defaultRegisterFormPassword" class="form-control  @error('password') is-invalid @enderror"
+                        <input type="password" id="RegisterFormPassword" class="form-control  @error('password') is-invalid @enderror"
                             placeholder="Password" name="password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required autocomplete="new-password">
                         <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                             At least 8 characters and 1 digit
@@ -85,7 +90,7 @@
                         @enderror
 
                         <!-- Password -->
-                        <input type="password" id="defaultRegisterFormPassword" class="form-control"
+                        <input type="password" id="RegisterFormPassword" class="form-control"
                             placeholder="Confirm Password" name="password_confirmation" aria-describedby="defaultRegisterFormPasswordHelpBlock" required autocomplete="new-password">
                         <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                             At least 8 characters and 1 digit
