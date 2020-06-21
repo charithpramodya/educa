@@ -10,6 +10,8 @@
                 @error('error')
                 <span class="invalid-feedback" role="alert">
                         <strong>{{ $error }}</strong>
+
+                        testing
                 </span>
                 @enderror
 
