@@ -49,7 +49,7 @@
 								
 								</td>
 								<td>{{$subject->en_name}}</td>
-								<td>{{$subject->exam->en_name}}</td>
+								<td>{{if(!is_null($subject->exam)) ? $subject->exam->en_name : ''}}</td>
 								<td>
 									<a href="#"> <i class="far fa-trash-alt"> </i> </a>
 									<a href="#"><i class="fas fa-edit" style="margin-left: 7px;"></i></a>
