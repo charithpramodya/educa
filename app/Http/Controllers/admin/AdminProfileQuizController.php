@@ -63,16 +63,21 @@ class AdminProfileQuizController extends Controller
          
         $Subject_id=Subject::where('fid',$data['subject'])->first('id');
 
-        $quiz=Quiz::create([
+        $arr=[
             'author_id'=>Auth::user()->id,
             'subject_id'=>$Subject_id['id'],
             'alias'=>$faker->unique()->md5,
             'name'=>$data['quizname'],
             'type'=>$data['type'],
-            'price'=>$data['quizprice'],
             'privacy'=>$data['privacy'],
 
-        ]);
+        ];
+
+        if(!is_null($data['quizprice'])){
+            $arr['price']=$data['quizprice'];
+        }
+
+        $quiz=Quiz::create($arr);
 
         if(!$request['image']==null){
             $image_id=$this->submitImage($request['image']);
